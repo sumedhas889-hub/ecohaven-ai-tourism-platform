@@ -53,6 +53,6 @@ Travelers often struggle to find personalized, sustainable, and authentic accomm
 
 🚧 Project Planning Phase
 
-This repository currently contains the project proposal and documentation. Development will begin in future phases.
+This repository currently contains the project proposal and documentation.
 
 For the repository name, use: **EcoHaven** or **ecohaven-ai-tourism-platform**.
