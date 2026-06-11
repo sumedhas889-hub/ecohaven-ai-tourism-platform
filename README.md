@@ -55,4 +55,3 @@ Travelers often struggle to find personalized, sustainable, and authentic accomm
 
 This repository currently contains the project proposal and documentation.
 
-For the repository name, use: **EcoHaven** or **ecohaven-ai-tourism-platform**.
