@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -34,3 +35,62 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+=======
+# ecohaven-ai-tourism-platform
+AI-powered platform for sustainable homestays and eco-tourism.
+Here's a polished README title and overview using **EcoHaven**:
+
+# EcoHaven 🌿
+
+## Overview
+
+EcoHaven is an AI-powered web application designed to help travelers discover sustainable homestays and eco-tourism experiences. The platform connects travelers with eco-friendly accommodations and authentic local experiences while promoting responsible tourism and supporting local communities.
+
+## Problem Statement
+
+Travelers often struggle to find personalized, sustainable, and authentic accommodation options. Meanwhile, many local homestay owners have limited online visibility. EcoHaven aims to bridge this gap through AI-powered recommendations and smart travel assistance.
+
+## Features
+
+* AI-powered personalized homestay recommendations
+* Smart search and filtering based on budget, location, and preferences
+* Booking and reservation management
+* Eco-tourism activity discovery
+* User reviews and ratings
+* AI travel assistant chatbot
+
+## Technology Stack
+
+### Frontend
+
+* React.js
+* Tailwind CSS
+
+### Backend
+
+* Node.js
+* Express.js
+
+### Database
+
+* MongoDB
+
+### AI Integration
+
+* OpenAI API / Gemini API
+
+## Future Scope
+
+* AI-generated travel itineraries
+* Multi-language support
+* Carbon footprint tracking
+* Mobile application development
+* Enhanced sustainability recommendations
+
+## Status
+
+🚧 Project Planning Phase
+
+This repository currently contains the project proposal and documentation.
+
+>>>>>>> 1c75485b27ce747d64550ffbd6207b3daef46ec4
