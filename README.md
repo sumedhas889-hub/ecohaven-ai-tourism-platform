@@ -114,6 +114,6 @@ Travelers often struggle to find personalized, sustainable, and authentic accomm
 
  Frontend Development in Progress 🚀
 
-This repository currently contains the project proposal and documentation.
+
 
 >>>>>>> 1c75485b27ce747d64550ffbd6207b3daef46ec4
