@@ -1,5 +1,28 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Homestay and Eco-Tourism Website
+
+## Overview
+A responsive website built using Next.js and Tailwind CSS to promote homestays and eco-tourism destinations.
+
+## Features
+- Responsive design
+- Modern UI using Tailwind CSS
+- Destination listings
+- Homestay information
+- Contact section
+
+## Technologies Used
+- Next.js
+- React.js
+- Tailwind CSS
+
+## Installation
+
+npm install
+
+npm run dev
+
+## Author
+Sumedha Sharma
 
 ## Getting Started
 
