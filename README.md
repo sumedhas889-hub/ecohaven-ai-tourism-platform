@@ -112,7 +112,7 @@ Travelers often struggle to find personalized, sustainable, and authentic accomm
 
 ## Status
 
-🚧 Project Planning Phase
+ Frontend Development in Progress 🚀
 
 This repository currently contains the project proposal and documentation.
 
