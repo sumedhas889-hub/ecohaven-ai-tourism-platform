@@ -2,143 +2,116 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
+const prisma = require("./prismaClient");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-// In-memory data
-let homestays = [
-  {
-    id: 1,
-    name: "Mountain View Homestay",
-    location: "Manali",
-    price: 2500
-  },
-  {
-    id: 2,
-    name: "Riverside Eco Stay",
-    location: "Rishikesh",
-    price: 3000
-  },
-  {
-    id: 3,
-    name: "Forest Cabin",
-    location: "Coorg",
-    price: 2800
-  }
-];
-
-// Home Route
+/* ---------------- HOME ROUTE ---------------- */
 app.get("/", (req, res) => {
   res.json({
-    message: "EcoHaven Backend Running 🚀"
+    message: "EcoHaven Backend Running 🚀 (Prisma + Supabase)"
   });
 });
 
-// GET all homestays
-app.get("/api/homestays", (req, res) => {
-  res.status(200).json(homestays);
-});
+/* ---------------- CREATE ---------------- */
+app.post("/api/homestays", async (req, res) => {
+  try {
+    const { name, location, price } = req.body;
 
-// GET one homestay
-app.get("/api/homestays/:id", (req, res) => {
-  const homestay = homestays.find(
-    (h) => h.id === parseInt(req.params.id)
-  );
-
-  if (!homestay) {
-    return res.status(404).json({
-      message: "Homestay not found"
+    const homestay = await prisma.homestay.create({
+      data: {
+        name,
+        location,
+        price: Number(price)
+      }
     });
-  }
 
-  res.status(200).json(homestay);
+    res.status(201).json(homestay);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
-// POST new homestay
-app.post("/api/homestays", (req, res) => {
-  console.log("Request Body:", req.body);
+/* ---------------- READ ALL ---------------- */
+app.get("/api/homestays", async (req, res) => {
+  try {
+    const homestays = await prisma.homestay.findMany();
+    res.status(200).json(homestays);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
-  const { name, location, price } = req.body;
-
-  if (!name || !location || !price) {
-    return res.status(400).json({
-      message: "All fields are required"
+/* ---------------- READ ONE ---------------- */
+app.get("/api/homestays/:id", async (req, res) => {
+  try {
+    const homestay = await prisma.homestay.findUnique({
+      where: { id: req.params.id }
     });
+
+    if (!homestay) {
+      return res.status(404).json({ message: "Homestay not found" });
+    }
+
+    res.status(200).json(homestay);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
-
-  const newHomestay = {
-    id: homestays.length + 1,
-    name,
-    location,
-    price
-  };
-
-  homestays.push(newHomestay);
-
-  res.status(201).json(newHomestay);
 });
 
-// PUT update homestay
-app.put("/api/homestays/:id", (req, res) => {
-  const homestay = homestays.find(
-    (h) => h.id === parseInt(req.params.id)
-  );
-
-  if (!homestay) {
-    return res.status(404).json({
-      message: "Homestay not found"
+/* ---------------- UPDATE ---------------- */
+app.put("/api/homestays/:id", async (req, res) => {
+  try {
+    const updated = await prisma.homestay.update({
+      where: { id: req.params.id },
+      data: req.body
     });
+
+    res.status(200).json(updated);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
-
-  homestay.name = req.body.name || homestay.name;
-  homestay.location = req.body.location || homestay.location;
-  homestay.price = req.body.price || homestay.price;
-
-  res.status(200).json(homestay);
 });
 
-// DELETE homestay
-app.delete("/api/homestays/:id", (req, res) => {
-  const index = homestays.findIndex(
-    (h) => h.id === parseInt(req.params.id)
-  );
-
-  if (index === -1) {
-    return res.status(404).json({
-      message: "Homestay not found"
+/* ---------------- DELETE ---------------- */
+app.delete("/api/homestays/:id", async (req, res) => {
+  try {
+    await prisma.homestay.delete({
+      where: { id: req.params.id }
     });
+
+    res.status(200).json({
+      message: "Homestay deleted successfully"
+    });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
-
-  homestays.splice(index, 1);
-
-  res.status(204).send();
 });
 
-// SEARCH homestays
-app.get("/api/search", (req, res) => {
-  const q = (req.query.q || "").toLowerCase();
+/* ---------------- SEARCH ---------------- */
+app.get("/api/search", async (req, res) => {
+  try {
+    const q = req.query.q || "";
 
-  const result = homestays.filter(
-    (h) =>
-      h.name.toLowerCase().includes(q) ||
-      h.location.toLowerCase().includes(q)
-  );
+    const results = await prisma.homestay.findMany({
+      where: {
+        OR: [
+          { name: { contains: q, mode: "insensitive" } },
+          { location: { contains: q, mode: "insensitive" } }
+        ]
+      }
+    });
 
-  res.status(200).json(result);
+    res.status(200).json(results);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
-// Error handler
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-
-  res.status(500).json({
-    message: "Internal Server Error"
-  });
-});
-
+/* ---------------- SERVER ---------------- */
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
