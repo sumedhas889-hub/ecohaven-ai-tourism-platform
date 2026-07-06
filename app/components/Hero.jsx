@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="text-center py-24 px-6 bg-black">
+    <section className="text-center py-24 bg-black">
       <h1 className="text-5xl font-bold text-white">
         Discover Sustainable Stays
       </h1>

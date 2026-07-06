@@ -1,7 +1,10 @@
 export default function Navbar() {
   return (
-    <nav className="flex justify-between items-center p-4 bg-slate-900 text-white">
-      <h1 className="text-2xl font-bold"> EcoHaven🏡</h1>
+    <nav className="flex justify-between items-center px-8 py-5 bg-slate-900 text-white">
+
+      <h1 className="text-2xl font-bold">
+        EcoHaven🏡
+      </h1>
 
       <div className="space-x-6">
         <a href="/">Home</a>
@@ -9,6 +12,7 @@ export default function Navbar() {
         <a href="/destinations">Destinations</a>
         <a href="/login">Login</a>
       </div>
+
     </nav>
   );
 }
