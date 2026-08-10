@@ -1,7 +1,7 @@
 export default function PrivacyPolicy() {
   return (
-    <main className="min-h-screen p-10 bg-[#F5F7F2]">
-      <h1 className="text-4xl font-bold text-[#2D4F3A]">
+    <main className="min-h-screen bg-white p-8">
+      <h1 className="text-3xl font-bold text-black">
         Privacy Policy
       </h1>
 
