@@ -4,9 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-  "dev": "nodemon server.js",
-  "postinstall": "prisma generate"
-}
+    "dev": "nodemon server.js",
+    "postinstall": "prisma generate"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -20,7 +20,7 @@
     "express-rate-limit": "^8.6.2",
     "express-session": "^1.19.0",
     "express-validator": "^7.3.2",
-    "google-auth-library": "^11.0.0",
+    "google-auth-library": "^11.0.2",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.7.3",
     "passport": "^0.7.0",
