@@ -1,3 +1,3 @@
-const app = require("../server");
-
-module.exports = app;
+module.exports = (req, res) => {
+  res.status(200).send("EcoHaven Vercel API is working!");
+};
